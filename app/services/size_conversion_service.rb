@@ -1,16 +1,20 @@
 require 'csv'
 
 class SizeConversionService
-  attr_accessor :file_path
+  @size_chart = nil
   def initialize(params)
     @from = params[:initial_national]&.downcase
     @to = params[:target_national]&.downcase
     @size = params[:size]
-    @file_path = Rails.root.join('public/sizing.csv')
   end
 
-  def read_csv
-    csv_data = CSV.read(@file_path, headers: true)
+  def self.size_chart
+    @size_chart ||= read_csv
+  end
+
+  def self.read_csv
+    file_path = Rails.root.join('public/sizing.csv')
+    csv_data = CSV.read(file_path, headers: true)
     size_chart = {}
     csv_data.each do |row|
       locale = row[0]&.downcase
@@ -18,14 +22,12 @@ class SizeConversionService
       sizes = row.fields[1..-1]&.map { |size| size&.downcase }
       size_chart[locale] = sizes
     end
-    convert_size(size_chart)
+    size_chart
   end
 
-  private
-
-  def convert_size(size_chart)
-    from_size = size_chart[@from]
-    to_size = size_chart[@to]
+  def convert_size
+    from_size = self.class.size_chart[@from]
+    to_size = self.class.size_chart[@to]
     return error_handling('initial national environment') unless from_size.present?
     return error_handling('target national environment') unless to_size.present?
 

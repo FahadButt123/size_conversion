@@ -11,12 +11,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :web_conversion, only: :index do
+  resources :conversion, only: :index do
     collection do
       post :size_convert
     end
   end
 
   # Defines the root path route ("/")
-  root "web_conversion#index"
+  root "conversion#index"
 end

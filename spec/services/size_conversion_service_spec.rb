@@ -11,10 +11,6 @@ RSpec.describe SizeConversionService do
 
   let(:service) { SizeConversionService.new(params) }
 
-  before do
-    allow(service).to receive(:file_path).and_return(Rails.root.join('spec', 'fixtures', 'files', 'size_chart.csv'))
-  end
-
   describe '#read_csv' do
     context 'when converting size from US to UK' do
       it 'returns the correct size' do
