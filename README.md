@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby Version: 3.1.2
 
-Things you may want to cover:
+Rails Version: 7.1.2
 
-* Ruby version
+Project Setup:
 
-* System dependencies
+* bundle install
 
-* Configuration
+* rails db:create
 
-* Database creation
+* rails s
 
-* Database initialization
+Run Test Cases
 
-* How to run the test suite
+* bundle exec rspec
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+NOTE: Our CSV file is not too big that's why we are reading the CSV file directly without storing this in database. If the file would be big then we will first store data then compare it for size 
+conversion.

@@ -1,6 +1,5 @@
 <div class="px-80 mt-20">
-  <p id="error" class="text-md text-[red]"></p>
-  <%= form_with(url: size_convert_web_conversion_index_path, method: :post, html: { id: 'size_form' }) do %>
+  <%= form_with(url: size_convert_web_conversion_index_path, method: :post, remote: true) do %>
     <div class="mb-5">
       <label for="initial_national" class="block mb-2 text-sm font-medium text-gray-900">Initial national environment <span class="text-[red]">*</span></label>
       <input type="text" id="initial_national" name="initial_national" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="ex: US" required />
@@ -15,10 +14,6 @@
     </div>
     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Convert</button>
   <% end %>
-  <div class="mt-5">
-    <label for="converted_size" class="block mb-2 text-sm font-medium text-gray-900">Converted Size</label>
-    <input disabled type="text" id="converted_size" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Size" />
+  <div class="mt-5" id="conversion_result">
   </div>
 </div>
-
-<%= javascript_include_tag "conversion_api" %>

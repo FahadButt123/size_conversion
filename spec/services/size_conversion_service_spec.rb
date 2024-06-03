@@ -30,7 +30,6 @@ RSpec.describe SizeConversionService do
           target_national: 'UK'
         }
       end
-
       it 'returns message' do
         expect(service.read_csv[:response]).to eq('Size not found in initial national environment')
       end
@@ -44,7 +43,6 @@ RSpec.describe SizeConversionService do
           target_national: 'ALPHA'
         }
       end
-
       it 'returns message' do
         expect(service.read_csv[:response]).to eq('Size not found in target national environment')
       end
@@ -58,7 +56,6 @@ RSpec.describe SizeConversionService do
           target_national: 'ALPHA'
         }
       end
-
       it 'returns message' do
         expect(service.read_csv[:response]).to eq('Invalid initial national environment')
       end
@@ -72,7 +69,6 @@ RSpec.describe SizeConversionService do
           target_national: 'UN'
         }
       end
-
       it 'returns message' do
         expect(service.read_csv[:response]).to eq('Invalid target national environment')
       end
